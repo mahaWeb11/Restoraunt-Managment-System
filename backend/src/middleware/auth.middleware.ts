@@ -1,10 +1,7 @@
 import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { AUTH_COOKIE_NAME } from "../config/cookie.config.js";
-
-export interface AuthRequest extends Request {
-  user?: { id: number; role: string };
-}
+import type { AuthRequest } from "../types/express.type.js";
 
 export const requireAuth = (
   req: AuthRequest,
@@ -21,7 +18,9 @@ export const requireAuth = (
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
       id: number;
       role: string;
+      restaurantId: number | null;
     };
+
     req.user = decoded;
     next();
   } catch {

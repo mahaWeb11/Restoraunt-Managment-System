@@ -35,6 +35,15 @@ export const createRestaurantWithOwner = async (data: CreateRestaurantData) => {
       { transaction: t },
     );
 
+    await owner.update(
+      {
+        restaurantId: restaurant.getDataValue("id"),
+      },
+      {
+        transaction: t,
+      },
+    );
+
     return { owner, restaurant };
   });
 
@@ -50,12 +59,21 @@ export const getAllRestaurants = async () => {
   });
 };
 
-export const getRestaurantById = async (id: number) => {
-  const restaurant = await Restaurant.findByPk(id, {
-    include: [{ association: "owner", attributes: { exclude: ["password"] } }],
+export const getMyRestoraunt = async (restaurantId: number) => {
+  const restaurant = await Restaurant.findByPk(restaurantId, {
+    include: [
+      {
+        association: "owner",
+        attributes: {
+          exclude: ["password"],
+        },
+      },
+    ],
   });
 
-  if (!restaurant) throw new Error("Restoran nije naden");
+  if (!restaurant) {
+    throw new Error("Restaurant not found");
+  }
 
   return restaurant;
 };

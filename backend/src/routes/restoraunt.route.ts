@@ -4,13 +4,14 @@ import { requireRole } from "../middleware/role.middleware.js";
 import {
   createRestaurant,
   getRestaurants,
-  getRestaurant,
+  getMyRestaurant,
 } from "../controllers/restoraunt.controller.js";
 
 const router = Router();
 
 router.post("/", requireAuth, requireRole("ADMIN"), createRestaurant);
 router.get("/", requireAuth, requireRole("ADMIN"), getRestaurants);
-router.get("/:id", requireAuth, getRestaurant);
+router.get("/me", requireAuth, getMyRestaurant);
+//router.get("/:id", requireAuth, getRestaurant);
 
 export default router;

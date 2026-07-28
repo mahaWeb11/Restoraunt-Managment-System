@@ -3,7 +3,7 @@ import type { AuthRequest } from "../middleware/auth.middleware.js";
 import {
   createRestaurantWithOwner,
   getAllRestaurants,
-  getRestaurantById,
+  getMyRestoraunt,
 } from "../services/restoraunt.service.js";
 
 export const createRestaurant = async (req: AuthRequest, res: Response) => {
@@ -28,11 +28,8 @@ export const getRestaurants = async (_req: AuthRequest, res: Response) => {
   }
 };
 
-export const getRestaurant = async (req: AuthRequest, res: Response) => {
-  try {
-    const restaurant = await getRestaurantById(Number(req.params.id));
-    res.status(200).json({ restaurant });
-  } catch (error: any) {
-    res.status(404).json({ message: error.message });
-  }
+export const getMyRestaurant = async (req: AuthRequest, res: Response) => {
+  const restaurant = await getMyRestoraunt(req.user!.restaurantId!);
+
+  res.json(restaurant);
 };

@@ -45,6 +45,7 @@ export const loginUser = async (data: LoginData) => {
   const token = generateToken({
     id: user.getDataValue("id"),
     role: user.getDataValue("role"),
+    restaurantId: user.getDataValue("restaurantId"),
   });
 
   return {
