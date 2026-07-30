@@ -1,5 +1,6 @@
 import type { Response } from "express";
-import type { AuthRequest } from "../middleware/auth.middleware.js";
+import type { AuthRequest } from "../types/express.type.js";
+
 import {
   createRestaurantWithOwner,
   getAllRestaurants,
