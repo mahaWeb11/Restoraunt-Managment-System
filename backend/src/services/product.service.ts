@@ -2,7 +2,7 @@ import { Product, Category } from "../models/index.js";
 import type { CreateProductData } from "../types/product.type.js";
 
 export const createProduct = async (
-  restaurantId: Number,
+  restaurantId: number,
   data: CreateProductData,
 ) => {
   const category = await Category.findOne({

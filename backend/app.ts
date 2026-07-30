@@ -6,6 +6,7 @@ import restaurantRoutes from "./src/routes/restoraunt.route.js";
 import categoryRoutes from "./src/routes/category.route.js";
 import productRoutes from "./src/routes/product.route.js";
 import dashboardRoutes from "./src/routes/dashboard.route.js";
+import adminRoutes from "./src/routes/admin.route.js";
 
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -30,5 +31,6 @@ app.use("/restoraunts", restaurantRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/products", productRoutes);
 app.use("/dashboard", dashboardRoutes);
+app.use("/admin", adminRoutes);
 
 export default app;

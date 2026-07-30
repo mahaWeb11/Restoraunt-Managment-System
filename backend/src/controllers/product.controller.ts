@@ -10,7 +10,7 @@ export const addProduct = async (req: AuthRequest, res: Response) => {
     const restaurantId = req.user?.restaurantId;
 
     if (!restaurantId) {
-      return res.status(400).json({ msg: "Korisnik nema restoran" });
+      return res.status(403).json({ msg: "Korisnik nema restoran" });
     }
 
     const product = await createProduct(restaurantId, req.body);
