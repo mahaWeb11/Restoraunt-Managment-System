@@ -39,7 +39,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/login"
-            className="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-slate-700 border border-slate-300 rounded-lg hover:bg-slate-50 transition-all"
+            className="inline-flex px-4 py-2 text-sm font-semibold text-slate-700 border border-slate-300 rounded-lg hover:bg-slate-50 transition-all"
           >
             Prijava
           </Link>
